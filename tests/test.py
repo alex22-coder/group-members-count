@@ -1,13 +1,12 @@
 import os
+from parser import (divide_users_into_two_groups, get_all_members, is_staff,
+                    open_file, write_result_in_file)
+
 import pytest
 
-from parser import (is_staff, write_result_in_file, open_file,
-                    get_all_members, divide_users_into_two_groups)
-
-
-from tests.conftest import (TEST_USER_IS_STAFF_WORD, TEST_USER_NOT_STAFF_WORD,
-                            HTML_ALL_USERS, HTML_WITH_DUPLICATE_USERS,
-                            ALL_USERS_LIST, STUDENTS, STAFF)
+from tests.conftest import (ALL_USERS_LIST, HTML_ALL_USERS,
+                            HTML_WITH_DUPLICATE_USERS, STAFF, STUDENTS,
+                            TEST_USER_IS_STAFF_WORD, TEST_USER_NOT_STAFF_WORD)
 
 
 @pytest.mark.parametrize("word", TEST_USER_IS_STAFF_WORD)
