@@ -2,7 +2,7 @@ from typing import Tuple, Set, List, Union
 
 from bs4 import BeautifulSoup
 
-from exceptions import NotFile, ParsingError
+from exceptions import NotFile
 from log.config_logger import logger
 
 STAFF_WORDS = ('куратор', 'наставник', 'менеджер', 'ревью',
