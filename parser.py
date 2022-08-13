@@ -13,8 +13,8 @@ def is_staff(user: str) -> bool:
     """checks if the user is an employee"""
     user = user.lower()
 
-    for i in STAFF_WORDS:
-        if i in user:
+    for word in STAFF_WORDS:
+        if word in user:
             return True
     return False
 
