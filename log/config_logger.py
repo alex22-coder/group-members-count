@@ -13,4 +13,4 @@ logging.basicConfig(
     level='DEBUG'
 )
 
-logger = logging
+logger = logging.getLogger(__name__)

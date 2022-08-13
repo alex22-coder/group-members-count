@@ -5,6 +5,10 @@ __pycache__/
 
 .idea
 
+program.log
+staff.txt
+students.txt
+
 # C extensions
 *.so
 

@@ -2,7 +2,7 @@ from typing import Tuple, Set, List, Union
 
 from bs4 import BeautifulSoup
 
-from exceptions import NotFile
+from exceptions import NotFile, ParsingError
 from log.config_logger import logger
 
 STAFF_WORDS = ('куратор', 'наставник', 'менеджер', 'ревью',
@@ -40,8 +40,14 @@ def get_all_members(html: str) -> set:
     soup = BeautifulSoup(html, 'html.parser')
     user_source = soup.find_all(class_='p-ia_details_popover__members_list_item')
 
+    if len(user_source) == 0:
+        raise ParsingError('в HTML нет класса "p-ia_details_popover__members_list_item"')
+
     for page_element in user_source:
-        slack_members.append(page_element.div.div['aria-label'])
+        try:
+            slack_members.append(page_element.div.div['aria-label'])
+        except Exception as err:
+            ParsingError(f'нет атрибута "aria-label" - {err}')
 
     users = set(slack_members)
 
@@ -89,7 +95,7 @@ def main():
         write_result_in_file(students, 'students')
     except NotFile:
         logger.error('нет файла slack_members.html')
-    except Exception as err:
+    except (Exception, ParsingError) as err:
         logger.error(f'Сбой в работе программы - {err}')
 
 
