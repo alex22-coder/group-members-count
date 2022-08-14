@@ -1,8 +1,15 @@
+import os
 import logging
 from logging.handlers import TimedRotatingFileHandler
 
+LOG_DIR_PATH = '../log'
+LOG_FILE = f'{LOG_DIR_PATH}/program.log'
+
+if not os.path.isdir(LOG_DIR_PATH):
+    os.mkdir(LOG_DIR_PATH)
+
 file_log = TimedRotatingFileHandler(
-    filename='../log/program.log', when='midnight', interval=1, backupCount=7)
+    filename=LOG_FILE, when='midnight', interval=1, backupCount=7)
 stream_log = logging.StreamHandler()
 
 logging.basicConfig(

@@ -1,3 +1,5 @@
+import os
+
 from typing import Tuple, Set, List, Union
 
 from bs4 import BeautifulSoup
@@ -8,6 +10,13 @@ from config_logger import logger
 STAFF_WORDS = ('куратор', 'наставник', 'менеджер', 'ревью',
                'продюсер сообществ', 'manager', 'support')
 
+RESULT_DIR = '../files_result'
+STUDENTS_TXT = f'{RESULT_DIR}/students'
+STAFF_TXT = f'{RESULT_DIR}/staff'
+
+
+if not os.path.isdir(RESULT_DIR):
+    os.mkdir(RESULT_DIR)
 
 def is_staff(user: str) -> bool:
     """checks if the user is an employee"""
@@ -88,8 +97,8 @@ def main():
         html = open_file()
         users = get_all_members(html)
         students, staff = divide_users_into_two_groups(users)
-        write_result_in_file(staff, '../files_result/staff')
-        write_result_in_file(students, '../files_result/students')
+        write_result_in_file(staff, STAFF_TXT)
+        write_result_in_file(students, STUDENTS_TXT)
     except NotFile:
         logger.error('нет файла slack_members.html')
     except (Exception, ParsingError) as err:
