@@ -4,8 +4,8 @@ from typing import Tuple, Set, List, Union
 
 from bs4 import BeautifulSoup
 
-from exceptions import NotFile, ParsingError
-from config_logger import logger
+from main_program.exceptions import NotFile, ParsingError
+from main_program.config_logger import logger
 
 STAFF_WORDS = ('куратор', 'наставник', 'менеджер', 'ревью',
                'продюсер сообществ', 'manager', 'support')
