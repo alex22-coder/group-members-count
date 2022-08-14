@@ -28,12 +28,9 @@ def test_read_html_from_file():
 
 def test_write_to_txt_file():
     """проверяем запись в файл"""
-    if os.path.isfile('tests/test.txt'):
-        os.remove('tests/test.txt')
-
     write_result_in_file(['test', 'write', 'read'], 'tests/test')
 
-    assert open_file('tests/test.txt') == 'test\nwrite\nread\n'
+    assert open_file('tests/test.txt') == 'test\nwrite\nread'
 
 
 def test_get_members_from_html():
