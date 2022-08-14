@@ -3,7 +3,7 @@ from typing import Tuple, Set, List, Union
 from bs4 import BeautifulSoup
 
 from exceptions import NotFile, ParsingError
-from log.config_logger import logger
+from config_logger import logger
 
 STAFF_WORDS = ('куратор', 'наставник', 'менеджер', 'ревью',
                'продюсер сообществ', 'manager', 'support')
@@ -88,8 +88,8 @@ def main():
         html = open_file()
         users = get_all_members(html)
         students, staff = divide_users_into_two_groups(users)
-        write_result_in_file(staff, 'staff')
-        write_result_in_file(students, 'students')
+        write_result_in_file(staff, '../files_result/staff')
+        write_result_in_file(students, '../files_result/students')
     except NotFile:
         logger.error('нет файла slack_members.html')
     except (Exception, ParsingError) as err:

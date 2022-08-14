@@ -2,7 +2,7 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 
 file_log = TimedRotatingFileHandler(
-    filename='log/program.log', when='midnight', interval=1, backupCount=7)
+    filename='../log/program.log', when='midnight', interval=1, backupCount=7)
 stream_log = logging.StreamHandler()
 
 logging.basicConfig(

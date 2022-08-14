@@ -1,5 +1,5 @@
-from parser import (divide_users_into_two_groups, get_all_members, is_staff,
-                    open_file, write_result_in_file)
+from main_program.parser import (divide_users_into_two_groups, get_all_members, is_staff,
+                                 open_file, write_result_in_file)
 
 import pytest
 
