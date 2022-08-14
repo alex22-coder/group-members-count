@@ -76,12 +76,9 @@ def divide_users_into_two_groups(users: Union[Set[str], List[str]]) -> Tuple[lis
 
 def write_result_in_file(users: list[str], file_name: str) -> None:
     """writes the result to a file"""
-    with open(f'{file_name}.txt', 'w'):
-        pass
+    with open(f'{file_name}.txt', 'w') as file:
+        file.write('\n'.join(users))
 
-    for user in users:
-        with open(f'{file_name}.txt', 'a') as file:
-            file.write(user + '\n')
     logger.info(f'успешно записали файл {file_name}.txt')
 
 
